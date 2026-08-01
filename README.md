@@ -10,7 +10,7 @@ This repository documents the complete implementation of the **Pathways to Possi
 
 The project supports Career Services by designing, implementing, and documenting the digital solutions used to manage event participation, presenter submissions, volunteer recruitment, student engagement, and future SharePoint resources.
 
-Rather than only preserving the finished products, this repository documents the complete process used to build each solution. Every deliverable includes the planning, implementation decisions, testing, screenshots, and supporting documentation needed for another administrator to recreate the solution from start to finish.
+This repository documents the complete process used to build each solution. Every deliverable includes the planning, implementation decisions, testing, screenshots, and supporting documentation needed for another administrator to recreate the solution from start to finish.
 
 ---
 
