@@ -95,9 +95,6 @@ SharePoint-Pathways-to-Possibilities
 ├── Planning
 │
 ├── SharePoint
-│
-├── Scripts
-│
 ├── CHANGELOG.md
 ├── LICENSE
 └── README.md
