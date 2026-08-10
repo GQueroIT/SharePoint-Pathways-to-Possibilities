@@ -2,45 +2,21 @@
 
 ## Purpose
 
-This document records the major design and implementation decisions made during the consolidation of the Pathways to Possibilities: Call for Proposals.
+This document records the major design and implementation decisions made while consolidating the Pathways to Possibilities proposal submission process into a single Call for Proposals in Submittable.
 
-The decisions reflect stakeholder direction, review of the existing proposal forms, and the capabilities of Submittable.
-
----
-
-## Decision 1 — Retain the Call for Proposals in Submittable
-
-### Decision
-
-The Call for Proposals remained in Submittable.
-
-### Reason
-
-The proposal process requires more than basic information collection. Submitted proposals need to be organized and reviewed by the Pathways to Possibilities planning team.
-
-Submittable already supports:
-
-- Structured proposal collection
-- Conditional form logic
-- File uploads
-- Submission management
-- Review workflows
-
-Keeping the proposal process in Submittable preserved these capabilities while allowing the form itself to be redesigned.
-
-### Outcome
-
-The proposal workflow remained separate from the Save the Date and attendee registration processes that were directed to Connects.
+The decisions documented here reflect the stakeholder direction and the final implemented structure of the form.
 
 ---
 
-## Decision 2 — Consolidate the Existing Proposal Processes
+## Decision 1 — Consolidate Proposal Intake
 
 ### Decision
 
-Previously separate proposal processes were consolidated into a single Call for Proposals.
+The separate proposal submission processes were consolidated into a single **Pathways to Possibilities: Call for Proposals**.
 
-The existing proposal-related forms included:
+### Previous Structure
+
+Proposal-related submissions had been handled through separate forms, including:
 
 - Call for Presentations
 - Student Virtual Poster Session
@@ -48,143 +24,122 @@ The existing proposal-related forms included:
 
 ### Reason
 
-Stakeholder direction called for consolidating the proposal process rather than continuing to maintain several separate entry points.
+The separate forms created multiple entry points for people interested in contributing to the same event.
 
-A centralized form gives participants one place to begin while allowing the planning team to manage proposals through a common submission process.
+A centralized Call for Proposals provides one submission location while still allowing different types of proposals to collect specialized information.
 
-### Outcome
+### Result
 
-The final solution uses one Submittable form titled:
-
-`Pathways to Possibilities: Call for Proposals`
+The consolidated form became the primary proposal intake mechanism for Pathways to Possibilities.
 
 ---
 
-## Decision 3 — Use Presentation and Interactive Activity as the Primary Proposal Types
+## Decision 2 — Keep the Call for Proposals in Submittable
 
 ### Decision
 
-The top-level proposal selection was simplified to:
+The Call for Proposals remained in Submittable rather than being moved to Connects.
+
+### Reason
+
+The proposal process requires structured submissions and committee review capabilities beyond basic event registration.
+
+Submittable already supports the proposal intake and review workflow needed by the planning team.
+
+### Result
+
+The platform responsibilities were separated as follows:
+
+```text
+Pathways to Possibilities
+│
+├── Connects
+│   ├── Event / Save the Date
+│   └── Attendee Registration
+│
+└── Submittable
+    └── Call for Proposals
+        └── Proposal Review Workflow
+```
+
+---
+
+## Decision 3 — Use a Primary Branching Question
+
+### Decision
+
+A single primary branching question was used to determine the submitter's main proposal pathway.
+
+The question is:
+
+**What type of proposal are you submitting?**
+
+Available options:
 
 - Presentation
 - Interactive Activity
 
 ### Reason
 
-During implementation, the proposal structure was organized so that related presentation formats could be grouped together rather than appearing as independent top-level proposal types.
+Using one primary decision point makes the form easier to understand and provides a predictable structure for conditional logic.
 
-This created a clearer first decision for the submitter and supported additional branching inside the Presentation pathway.
+It also prevents specialized questions from appearing before the form knows which type of proposal is being submitted.
 
-### Outcome
+### Result
 
-The first branching question asks:
+The primary branching structure is:
 
-`What type of proposal are you submitting?`
-
-The submitter selects either Presentation or Interactive Activity.
-
----
-
-## Decision 4 — Place Poster Session Under Presentation
-
-### Decision
-
-Poster Session was implemented as a presentation type rather than a separate primary proposal type.
-
-### Reason
-
-The student poster workflow still requires specialized questions, but it belongs within the broader presentation contribution process.
-
-After a submitter selects Presentation, the form asks:
-
-`What type of presentation are you proposing?`
-
-The available choices are:
-
-- Formal Presentation
-- Poster Session
-
-This preserves the specialized poster workflow without requiring another independent proposal form or another top-level proposal category.
-
-### Outcome
-
-Poster Session has its own conditional section containing the student and poster-specific requirements.
-
----
-
-## Decision 5 — Use Branching Instead of Showing Every Question
-
-### Decision
-
-Conditional branching was used to control which sections of the form are displayed.
-
-### Reason
-
-The consolidated form contains questions that apply only to certain proposal types.
-
-Displaying every question to every submitter would create a longer and more confusing form and would require participants to determine which questions they should ignore.
-
-Branching allows the form to display only the information relevant to the selected pathway.
-
-### Outcome
-
-The form follows this general structure:
-
-Call for Proposals
+```text
+Proposal Type
 │
 ├── Presentation
-│   │
-│   ├── Formal Presentation
-│   │   └── Presentation Information
-│   │
-│   └── Poster Session
-│       └── Poster Session Information
 │
 └── Interactive Activity
-    └── Interactive Activity Information
+```
+
+Each response controls which specialized section becomes relevant later in the form.
 
 ---
 
-## Decision 6 — Keep Common Questions Outside Specialized Branches
+## Decision 4 — Treat Poster Sessions as a Presentation Type
 
 ### Decision
 
-Questions that apply broadly to proposals were placed in a shared section rather than duplicated inside individual branches.
+Poster Session was placed under the Presentation pathway rather than being maintained as a separate primary proposal type.
 
 ### Reason
 
-Duplicating common questions would make the form more difficult to maintain and could create inconsistent wording between proposal pathways.
+The stakeholder-approved consolidation combined the previous presentation and student poster submission processes.
 
-### Outcome
+Using Presentation as the broader category allowed the form to support both formats while keeping the primary proposal selection simple.
 
-The Shared Proposal Information section collects information such as:
+### Result
 
-- Proposal title
-- Proposal description
-- Intended audience
-- Presenter biography
-- Participant takeaways
-- Accessibility accommodations
+Presentation contains a secondary decision:
 
-Specialized sections are then used only for information that differs by proposal type.
+```text
+Presentation
+│
+└── What type of presentation are you proposing?
+    │
+    ├── Formal Presentation
+    │
+    └── Poster Session
+```
+
+Formal Presentation and Poster Session then display their respective specialized information.
 
 ---
 
-## Decision 7 — Preserve Specialized Poster Requirements
+## Decision 5 — Preserve Poster-Specific Information
 
 ### Decision
 
-The consolidated form retained information necessary for evaluating and planning Poster Session submissions.
+Relevant information from the previous Student Virtual Poster Session form was retained within the Poster Session pathway.
 
-### Reason
+### Information Preserved
 
-Consolidation was not intended to remove information that remained necessary for the poster submission process.
-
-Poster submissions require academic, project, contributor, and file information that does not apply to Formal Presentation submissions.
-
-### Outcome
-
-The Poster Session pathway includes fields for:
+The poster pathway includes:
 
 - Degree program
 - Expected graduation term
@@ -194,70 +149,207 @@ The Poster Session pathway includes fields for:
 - Additional student presenters or contributors
 - Poster file
 - Supplemental materials
-- Multimedia
-- Additional planning information
-
----
-
-## Decision 8 — Add Secondary Logic for Group Poster Projects
-
-### Decision
-
-Additional contributor information is displayed only when a Poster Session submitter selects Group Project.
+- Multimedia use
+- Additional information for the planning team
 
 ### Reason
 
-The field is unnecessary for individual projects.
+Consolidating the forms should not remove information that the planning team still needs to understand and review student poster submissions.
 
-Displaying it conditionally keeps the form focused on information relevant to the submitter.
+### Result
 
-### Outcome
-
-Selecting:
-
-`Group Project`
-
-displays:
-
-`Additional Student Presenters or Contributors`
-
-Selecting Individual Project does not display that field.
+Poster submitters receive a specialized section without requiring a separate submission form.
 
 ---
 
-## Decision 9 — Require the Poster File
+## Decision 6 — Use Secondary Conditional Logic for Group Posters
 
 ### Decision
 
-Poster Session submissions require a poster file in PDF format.
+The field for additional student presenters or contributors is displayed when the submitter identifies the poster as a group project.
 
 ### Reason
 
-The poster itself is a primary component of the submission and provides reviewers with the material needed to evaluate the proposed display.
+An individual project does not require information about additional contributors.
 
-### Outcome
+Displaying the field only when relevant reduces unnecessary questions.
 
-A required Poster File upload field was included in the Poster Session pathway.
+### Result
 
-The form instructs submitters to upload the completed poster or the most current version if it is still being finalized.
+The logic is:
+
+```text
+Individual or Group Project?
+│
+├── Individual Project
+│   └── No additional contributor information needed
+│
+└── Group Project
+    └── Additional Student Presenters or Contributors
+```
+
+This demonstrates the use of secondary conditional logic inside an existing proposal pathway.
 
 ---
 
-## Decision 10 — Keep Supplemental Materials Optional
+## Decision 7 — Maintain Interactive Activity as a Separate Pathway
 
 ### Decision
 
-Supplemental materials are optional.
+Interactive Activity remained a separate primary proposal type.
 
 ### Reason
 
-Supporting files may help reviewers understand certain proposals, but they are not necessary for every submission.
+Interactive activities can differ significantly from formal presentations and poster sessions.
 
-Requiring them would create an unnecessary submission requirement.
+The planning team benefits from knowing the type of interactive experience being proposed.
 
-### Outcome
+### Result
 
-Submitters can provide supporting materials such as:
+Interactive Activity includes the question:
+
+**What type of interactive activity are you proposing?**
+
+Available options include:
+
+- Interactive Workshop
+- Demonstration
+- Facilitated Discussion
+- Panel Discussion
+- Networking Activity
+- Other
+
+---
+
+## Decision 8 — Use Shared Questions Where Possible
+
+### Decision
+
+Information applicable across proposal types was collected once in shared sections rather than duplicated inside individual branches.
+
+### Shared Information
+
+Examples include:
+
+- Submitter information
+- Contact information
+- Affiliation
+- Organization, school, or department
+- Proposal title
+- Proposal description
+- Intended audience
+- Presenter biography
+- Participant takeaways
+- Accessibility accommodations
+
+### Reason
+
+Duplicating the same fields across multiple branches would increase maintenance and create opportunities for inconsistent wording or configuration.
+
+### Result
+
+The form follows the general model:
+
+```text
+Shared Information
+       │
+       ▼
+Proposal Selection
+       │
+       ▼
+Specialized Questions
+       │
+       ▼
+Submission
+```
+
+This keeps the form easier to maintain while preserving specialized pathways.
+
+---
+
+## Decision 9 — Retain Presenter Biography and Participant Takeaways
+
+### Decision
+
+Presenter biography and participant takeaway questions were retained as part of the shared proposal information.
+
+### Reason
+
+Both fields provide useful information during proposal evaluation.
+
+The biography gives reviewers context about the person proposing the contribution, while the takeaway question helps identify what participants are expected to gain from the session.
+
+### Result
+
+Submitters are asked to provide information that supports both proposal review and later event planning.
+
+---
+
+## Decision 10 — Include Accessibility Accommodations
+
+### Decision
+
+An accessibility accommodations field was included in the proposal process.
+
+### Reason
+
+The planning team may need advance notice of accommodations required by presenters or participants contributing to the summit.
+
+The field does not need to be completed when no accommodations are required.
+
+### Result
+
+The form asks submitters whether they require accommodations and provides space to describe them when applicable.
+
+---
+
+## Decision 11 — Keep Relevant Presentation Experience Optional
+
+### Decision
+
+The detailed **Relevant Presentation Experience** field was left optional.
+
+### Reason
+
+The Presentation pathway already asks submitters to identify their level of presentation experience.
+
+Requiring a detailed description could create an unnecessary barrier for someone submitting their first formal presentation.
+
+### Result
+
+Experienced presenters may provide additional context, while first-time presenters are not required to invent or provide experience they do not have.
+
+---
+
+## Decision 12 — Require the Poster File
+
+### Decision
+
+Poster Session submissions require a poster file.
+
+### Configuration
+
+The poster is uploaded as a PDF.
+
+### Reason
+
+The poster itself is a core component of the submission and provides reviewers with the material necessary to understand the proposed work.
+
+### Result
+
+Poster submissions cannot be completed without the primary poster file.
+
+---
+
+## Decision 13 — Allow Optional Supplemental Materials
+
+### Decision
+
+Poster submitters may provide supplemental materials in addition to the required poster file.
+
+### Supported Examples
+
+Supplemental materials may include:
 
 - Images
 - Charts
@@ -265,112 +357,184 @@ Submitters can provide supporting materials such as:
 - Supporting documents
 - Short demonstration videos
 
-The field can be left blank when no supplemental materials are needed.
+### Reason
+
+Some projects may be better understood when reviewers can see supporting material, but these files are not necessary for every submission.
+
+### Result
+
+The supplemental upload remains optional.
 
 ---
 
-## Decision 11 — Keep Accessibility Information Optional
+## Decision 14 — Incorporate Visual Work Without Maintaining a Separate Visual Board Form
 
 ### Decision
 
-The form includes an optional accessibility accommodations field.
+The previous Image and Visual Boards process was not maintained as an independent proposal form or primary proposal pathway.
 
 ### Reason
 
-Participants need a way to communicate accommodations that may be necessary for their participation, but submitters who do not require accommodations should not be required to provide a response.
+The purpose of the consolidation was to reduce separate submission processes rather than reproduce every previous form inside the new architecture.
 
-### Outcome
+Relevant functionality could be supported through the consolidated proposal structure and supplemental materials where appropriate.
 
-The form asks whether accommodations are needed and instructs the submitter to leave the field blank if none are required.
+### Result
+
+The Call for Proposals remains focused on the stakeholder-approved proposal pathways instead of preserving a separate Visual Board submission workflow.
 
 ---
 
-## Decision 12 — Update Organizational Terminology
+## Decision 15 — Update Department Terminology
 
 ### Decision
 
-Applicable references to Career Services were changed to:
+Applicable references to **Career Services** were changed to:
 
-`Career & Experiential Learning Services`
+**Career & Experiential Learning Services**
 
 ### Reason
 
-This terminology change was specifically requested during stakeholder review.
+This change was requested during stakeholder review and reflects the current department terminology used for the Pathways to Possibilities event.
 
-### Outcome
+### Result
 
-The updated department name appears in the introductory language of the finalized Call for Proposals.
+The revised terminology was incorporated into applicable form content.
 
 ---
 
-## Decision 13 — Use the Official Event Logo
+## Decision 16 — Use the Official Pathways to Possibilities Branding
 
 ### Decision
 
-The official Pathways to Possibilities event logo was used as the branding element in the form.
+The official Pathways to Possibilities event logo is used as the branding asset for the Call for Proposals.
 
 ### Reason
 
-Using the approved event branding maintains consistency between the form and the larger Pathways to Possibilities initiative.
+Using the official event identity keeps the submission experience visually connected to the larger Pathways to Possibilities initiative.
 
-### Outcome
+### Result
 
-The official logo appears once in the welcome section of the form.
+The form welcome section includes the official Pathways to Possibilities logo.
 
 ---
 
-## Decision 14 — Use Consistent Confirmation Language
+## Decision 17 — Include Clear Introductory Guidance
 
 ### Decision
 
-All proposal pathways conclude with the same Thank You section.
+The Call for Proposals begins with a welcome section explaining:
+
+- The event.
+- Who may submit.
+- The general purpose of the Call for Proposals.
+- The available contribution categories.
+- How the form changes based on selections.
+- That proposals will be reviewed.
+- That submission does not guarantee acceptance.
 
 ### Reason
 
-Regardless of proposal type, every submitter needs the same basic confirmation:
+Submitters should understand the process before beginning the form.
 
-- The proposal was received.
-- The proposal will be reviewed.
-- Additional information may be requested.
+### Result
+
+The form establishes expectations before collecting information.
+
+---
+
+## Decision 18 — Include Submission Confirmation Content
+
+### Decision
+
+A Thank You section was included at the end of the proposal pathways.
+
+### Reason
+
+Submitters need confirmation of what happens after completing the form.
+
+### Result
+
+The confirmation content explains that:
+
+- The proposal has been received.
+- The planning team will review it.
+- The submitter may be contacted if clarification is needed.
 - Submission does not guarantee acceptance.
-- Selected participants will receive additional instructions.
-
-### Outcome
-
-A common confirmation section is displayed at the end of the submission process.
+- Selected participants will receive additional information after review.
 
 ---
 
-## Decision 15 — Limit Implementation to Approved Stakeholder Direction
+## Decision 19 — Configure a Submittable Review Workflow
 
 ### Decision
 
-The form was not expanded with additional requirements simply because they could potentially be useful.
+A review workflow stage was configured within the Submittable project.
 
 ### Reason
 
-The purpose of the revision was to implement the stakeholder-requested changes while improving and consolidating the existing solution.
+The proposal process does not end when the form is submitted.
 
-Adding unrequested business rules could change the proposal process without stakeholder approval.
+The planning team needs a structured method for evaluating submissions after intake.
 
-### Outcome
+### Result
 
-The implementation focused on:
+The overall process becomes:
 
-- Requested consolidation
-- Updated terminology
-- Appropriate branching
-- Preservation of relevant existing requirements
-- Improved organization and usability
-
-Additional enhancements can be considered later if requested during stakeholder review.
+```text
+Call for Proposals
+        │
+        ▼
+Proposal Submitted
+        │
+        ▼
+Submittable Review Workflow
+        │
+        ▼
+Planning Team Review
+        │
+        ▼
+Selection / Follow-Up
+```
 
 ---
 
-## Final Design Principle
+## Decision 20 — Separate Proposal Management From Event Registration
 
-The final Call for Proposals was designed around a simple principle:
+### Decision
 
-**One submission process with different paths based on what the participant is proposing.**
+Proposal submission and attendee registration were treated as separate business processes.
 
-This allowed the existing proposal workflows to be consolidated without eliminating the specialized information needed to review Formal Presentations, Poster Sessions, and Interactive Activities.
+### Reason
+
+Someone submitting a proposal is completing a different workflow from someone registering to attend the event.
+
+The platforms also serve different purposes:
+
+- Connects supports the event and attendee registration process.
+- Submittable supports proposal intake and review.
+
+### Result
+
+The project no longer assumes that every Pathways to Possibilities form must exist within the same platform.
+
+---
+
+## Final Decision Summary
+
+The final Call for Proposals design follows these principles:
+
+- One centralized proposal intake form.
+- Submittable remains the proposal-management platform.
+- A simple primary branching question controls the major pathways.
+- Presentation contains Formal Presentation and Poster Session options.
+- Interactive Activity remains its own pathway.
+- Shared questions are collected once.
+- Specialized information appears only where needed.
+- Secondary conditional logic is used when necessary within a pathway.
+- Relevant information from previous forms is preserved without duplicating entire forms.
+- Proposal review remains part of the Submittable workflow.
+- Connects is used separately for event registration-related processes.
+- Current stakeholder terminology and official event branding are maintained.
+
+These decisions provide the implementation baseline for the consolidated Pathways to Possibilities Call for Proposals.

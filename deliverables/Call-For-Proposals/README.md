@@ -1,47 +1,40 @@
 # Call for Proposals
 
-## Overview
+## Pathways to Possibilities: Launch Your Future
 
-The Call for Proposals is the centralized proposal submission form for the Pathways to Possibilities: Launch Your Future Summit.
+The Call for Proposals is the centralized proposal submission process for the Pathways to Possibilities: Launch Your Future Summit at Empire State University.
 
-The form was developed in Submittable to provide a single submission process while supporting different proposal pathways through conditional branching. The final solution consolidates previously separate proposal processes into one form and displays only the questions relevant to the type of contribution being submitted.
+The form was implemented in Submittable for Career & Experiential Learning Services and provides a single entry point for collecting different types of event proposals while preserving the specialized information required for each proposal pathway.
 
-The form supports two primary proposal types:
-
-- Presentation
-- Interactive Activity
-
-When Presentation is selected, the submitter can continue through one of two presentation pathways:
-
-- Formal Presentation
-- Poster Session
-
-This structure allows multiple proposal formats to be managed through a single Call for Proposals while maintaining different information requirements for each pathway.
+---
 
 ## Business Need
 
-The original event workflow used separate forms for different types of proposals, including presentations and student poster submissions.
+The original Pathways to Possibilities proposal process used separate forms for different types of event contributions, including presentations, student poster submissions, and visual board submissions.
 
-Following stakeholder review, the proposal process needed to be consolidated so that participants could begin from a single Call for Proposals rather than navigating multiple independent forms.
+Following stakeholder review, the proposal process was consolidated to reduce the number of separate forms and provide submitters with a clearer entry point.
 
-The revised form needed to:
+The revised solution needed to:
 
-- Provide one centralized proposal submission process.
-- Preserve the information requirements of the existing proposal workflows where applicable.
-- Support different proposal types without presenting unnecessary questions to every submitter.
-- Continue using Submittable for proposal collection and review.
-- Support the planning team's proposal evaluation process.
-- Use the updated Career & Experiential Learning Services terminology.
-- Maintain consistent Pathways to Possibilities branding.
+- Provide one centralized Call for Proposals.
+- Support presentations and interactive activities.
+- Incorporate poster sessions into the presentation pathway.
+- Preserve specialized questions where different proposal types required different information.
+- Reduce unnecessary questions for submitters.
+- Support proposal review within Submittable.
+- Maintain a clear and manageable submission experience.
 
-## Solution
+Submittable was retained because the platform supports proposal collection, conditional branching, file uploads, and the review workflow required by the planning team.
 
-A consolidated Call for Proposals form was implemented in Submittable using branching logic.
+---
 
-The form begins with common submitter and proposal information before directing users into the appropriate proposal pathway.
+## Final Solution
 
-The primary structure is:
+The completed Call for Proposals uses conditional branching to guide submitters through the form.
 
+The primary proposal selection provides two pathways:
+
+```text
 Call for Proposals
 │
 ├── Presentation
@@ -50,107 +43,241 @@ Call for Proposals
 │   │   └── Presentation-specific questions
 │   │
 │   └── Poster Session
-│       └── Poster-specific questions and file uploads
+│       └── Poster-specific questions
 │
 └── Interactive Activity
-    └── Interactive activity-specific questions
+    └── Interactive Activity-specific questions
+```
 
-Shared information is collected before the proposal-specific sections so common questions do not need to be duplicated across multiple branches.
+All submitters first provide common information. The form then displays additional questions based on the proposal selections they make.
 
-Additional conditional logic is used within the Poster Session pathway. For example, selecting Group Project displays the field for additional student presenters or contributors.
+This structure allows one form to support multiple submission scenarios without requiring every submitter to complete questions that do not apply to their proposal.
 
-## Key Features
+---
 
-### Centralized Proposal Intake
+## Form Architecture
 
-Participants begin from one Call for Proposals rather than separate proposal forms.
+The implemented form follows this general structure:
 
-### Conditional Branching
+```text
+Call for Proposals
+│
+├── Welcome
+│
+├── Submitter Information
+│
+├── Proposal Type
+│   │
+│   ├── Presentation
+│   │   │
+│   │   ├── Formal Presentation
+│   │   │   └── Presentation Information
+│   │   │
+│   │   └── Poster Session
+│   │       └── Poster Session Information
+│   │
+│   └── Interactive Activity
+│       └── Interactive Activity Information
+│
+├── Shared Proposal Information
+│
+└── Submission Confirmation
+```
 
-Submittable branching controls which sections appear based on the submitter's selections.
+The branching structure keeps the form centralized while allowing specialized information to be collected only when necessary.
 
-### Shared Proposal Information
+---
 
-Common information such as proposal title, description, intended audience, presenter biography, and participant takeaways is collected once and reused across the proposal workflow.
+## Shared Proposal Information
 
-### Formal Presentation Pathway
+Information collected broadly across proposals includes:
 
-Formal Presentation submissions collect additional information related to:
+- Submitter name
+- Email address
+- Phone number
+- Submitter affiliation
+- Organization, school, or department
+- Proposal title
+- Proposal description
+- Intended audience
+- Presenter biography
+- Participant takeaways
+- Accessibility accommodations
+
+These questions provide the planning and review teams with the core information needed to understand the proposal regardless of the selected pathway.
+
+---
+
+## Presentation Pathway
+
+Submitters who select **Presentation** are asked to identify whether they are proposing:
+
+- Formal Presentation
+- Poster Session
+
+This secondary selection allows presentation-related submissions to remain grouped together while still collecting different information for the two formats.
+
+### Formal Presentation
+
+The Formal Presentation pathway collects information including:
 
 - Presentation topic
 - Presentation format
 - Presentation experience
 - Relevant presentation experience
 
-### Poster Session Pathway
+This information helps reviewers understand the proposed presentation and the submitter's experience.
 
-Poster Session submissions collect information related to:
+### Poster Session
+
+The Poster Session pathway collects information including:
 
 - Degree program
 - Expected graduation term
 - Faculty mentor
 - Project type
-- Individual or group participation
-- Additional student contributors when applicable
+- Individual or group project
+- Additional student presenters or contributors when applicable
 - Poster file
 - Supplemental materials
-- Multimedia
-- Additional planning information
+- Multimedia use
+- Additional information for the planning team
 
-### Interactive Activity Pathway
+The group-project selection also allows additional contributor information to be collected when needed.
 
-Interactive Activity submissions collect information specific to the proposed activity, including the type of activity and any technology, space, equipment, or other requirements needed to facilitate it.
+---
 
-### File Collection
+## Interactive Activity Pathway
 
-Poster Session submissions support required PDF poster uploads and optional supplemental materials to assist reviewers.
+Submitters who select **Interactive Activity** receive questions specific to an activity-based proposal.
 
-### Accessibility
+The form asks the submitter to identify the type of interactive activity being proposed.
 
-The form includes an optional field allowing participants to communicate accessibility accommodations needed to participate.
+Available activity types include:
 
-### Event Branding
+- Interactive Workshop
+- Demonstration
+- Facilitated Discussion
+- Panel Discussion
+- Networking Activity
+- Other
 
-The official Pathways to Possibilities event logo is used in the form along with event-specific introductory and confirmation language.
+This allows the planning team to understand the intended activity format without requiring these questions from presentation or poster submitters.
 
-## Platform
+---
 
-The solution was implemented using:
+## Conditional Branching
 
-- Submittable
-- Submittable conditional branching
-- Submittable file uploads
-- Submittable proposal submission workflow
+Conditional branching is the primary mechanism used to support the consolidated form.
 
-Submittable was retained for the Call for Proposals because the proposal process requires structured submission collection and committee review.
+The form begins with shared questions and then progressively displays specialized sections based on the submitter's selections.
+
+The branching logic can be summarized as:
+
+```text
+Proposal Type
+│
+├── Presentation
+│   │
+│   └── Presentation Type
+│       │
+│       ├── Formal Presentation
+│       │   └── Show Presentation Information
+│       │
+│       └── Poster Session
+│           └── Show Poster Session Information
+│
+└── Interactive Activity
+    └── Show Interactive Activity Information
+```
+
+Additional conditional logic is used where information is only necessary for a specific response, such as collecting additional student contributors for a group poster project.
+
+---
+
+## Review Workflow
+
+The Call for Proposals remains in Submittable because proposal submissions require review by the Pathways to Possibilities planning team.
+
+A Submittable project and review workflow were configured to support the proposal evaluation process.
+
+This separates proposal management from the event attendance process while keeping proposal submissions and review activities within the platform designed for that purpose.
+
+---
 
 ## Stakeholder-Driven Changes
 
-The final implementation reflects stakeholder direction received during project review.
+The final implementation reflects stakeholder feedback received during the project.
 
 Major changes included:
 
-- Updating applicable references from "Career Services" to "Career & Experiential Learning Services."
-- Retaining the Call for Proposals in Submittable.
-- Consolidating proposal submission workflows.
-- Using branching to support multiple submission pathways within a single form.
-- Structuring Presentation as the primary proposal type with Formal Presentation and Poster Session as presentation pathways.
+- Updating applicable references from **Career Services** to **Career & Experiential Learning Services**.
+- Consolidating previously separate proposal submission processes.
+- Creating one Call for Proposals.
+- Using Presentation and Interactive Activity as the primary proposal pathways.
+- Incorporating Poster Session beneath the Presentation pathway.
+- Incorporating relevant functionality from the previous visual board submission process into the consolidated solution.
+- Removing submitter categories that were no longer required.
+- Retaining Submittable for proposal submission and review.
 
-The implementation focused specifically on the changes requested by the stakeholder while preserving useful elements of the existing forms where they supported the consolidated workflow.
+These changes were implemented before the final form was tested and documented.
 
-## Repository Documentation
+---
 
-This deliverable is documented through the following files:
+## Testing
 
-- `README.md` — Deliverable overview and final solution
-- `Planning.md` — Business requirements and implementation planning
-- `Decisions.md` — Major design and implementation decisions
-- `Implementation.md` — Step-by-step implementation record
-- `Testing.md` — Validation of branching and form behavior
-- `Screenshots/` — Visual evidence of the completed implementation
+The completed form was previewed and manually tested to verify that:
+
+- Shared questions display correctly.
+- Presentation branching works.
+- Formal Presentation questions display only when applicable.
+- Poster Session questions display only when applicable.
+- Interactive Activity questions display only when applicable.
+- Group poster projects reveal the additional contributor field.
+- Required fields are identified appropriately.
+- File upload fields appear in the appropriate pathway.
+- Unrelated branch questions remain hidden.
+- The submission confirmation content appears at the end of the applicable pathway.
+
+Testing evidence is maintained in the `Screenshots` directory.
+
+See [Testing.md](Testing.md) for the detailed testing record.
+
+---
+
+## Documentation
+
+The deliverable documentation is organized as follows:
+
+```text
+Call-For-Proposals/
+│
+├── Screenshots/
+│
+├── Decisions.md
+├── Implementation.md
+├── Information-Architecture.md
+├── Planning.md
+├── README.md
+└── Testing.md
+```
+
+Each document records a different part of the implementation:
+
+- **README.md** — Overview of the completed solution.
+- **Planning.md** — Business need, requirements, and planned architecture.
+- **Decisions.md** — Major design and implementation decisions.
+- **Implementation.md** — Step-by-step record of how the solution was configured.
+- **Information-Architecture.md** — Structure and information flow of the consolidated form.
+- **Testing.md** — Validation of the completed form and branching behavior.
+- **Screenshots/** — Visual evidence of the implementation.
+
+---
 
 ## Outcome
 
-The completed Call for Proposals provides a single entry point for proposal submissions while preserving specialized workflows for different contribution types.
+The completed Call for Proposals replaces multiple disconnected proposal submission processes with a single structured Submittable form.
 
-The branching architecture reduces unnecessary questions for submitters, avoids maintaining multiple independent proposal forms, and gives the Pathways to Possibilities planning team a centralized process for collecting and reviewing proposals.
+The solution provides submitters with one entry point while allowing the planning team to collect specialized information for Formal Presentations, Poster Sessions, and Interactive Activities.
+
+The resulting form is easier to navigate, reduces unnecessary questions, preserves the information needed for proposal evaluation, and supports the review process within Submittable.

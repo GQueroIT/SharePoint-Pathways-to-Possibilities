@@ -2,119 +2,105 @@
 
 ## Purpose
 
-This document records how the consolidated Pathways to Possibilities: Call for Proposals was implemented in Submittable.
+This document records how the consolidated **Pathways to Possibilities: Call for Proposals** was implemented in Submittable.
 
-The implementation combined previously separate proposal workflows into a single form while using branching to display the appropriate questions for each submission pathway.
-
-The purpose of this document is to provide a reproducible record of the completed configuration.
+The implementation was based on stakeholder direction to consolidate the existing proposal-related forms while preserving the specialized information required for different submission types.
 
 ---
 
 ## Platform
 
-The form was implemented in Submittable.
+The Call for Proposals was implemented using **Submittable**.
 
-Submittable was retained because the Call for Proposals requires structured proposal collection, file uploads, submission management, and committee review capabilities.
+Submittable was retained for this process because the Call for Proposals requires both structured proposal intake and a review workflow for the Pathways to Possibilities planning team.
 
----
-
-## Step 1 — Create the Consolidated Form
-
-A single form was configured with the name:
-
-`Pathways to Possibilities: Call for Proposals`
-
-This form became the centralized entry point for proposal submissions.
-
-The form replaced the need for participants to begin from separate proposal forms depending on the type of contribution they wanted to submit.
+Event registration-related processes are handled separately through Connects.
 
 ---
 
-## Step 2 — Configure the Welcome Section
+## Source Forms
 
-A Welcome section was placed at the beginning of the form.
+The consolidated Call for Proposals was developed using the existing proposal-related forms as the implementation baseline:
 
-The section includes:
+- Call for Presentations
+- Student Virtual Poster Session
+- Image and Visual Boards
 
-- Official Pathways to Possibilities event logo
-- Summit dates
-- Event purpose
-- Career & Experiential Learning Services terminology
-- Explanation of the proposal process
-- General review information
-- Notice that submission does not guarantee acceptance
-
-The introductory language explains that the questions displayed later in the form change based on the selections made by the submitter.
-
-This prepares users for the conditional behavior of the form before they begin.
+Rather than maintaining three independent submission processes, applicable information from these forms was reviewed and incorporated into a centralized proposal workflow.
 
 ---
 
-## Step 3 — Configure the Submission Name
+## Final Form Name
 
-A Submission Name field was configured using:
-
-`Proposal Title - Submitter Name`
-
-The submission name serves as the unique identifier for each submission within Submittable.
+**Pathways to Possibilities: Call for Proposals**
 
 ---
 
-## Step 4 — Configure Submitter Information
+# 1. Welcome Section
 
-The common submitter information was placed near the beginning of the form before proposal-specific branching.
+The form begins with a welcome section that introduces the Call for Proposals and explains the purpose of the submission process.
 
-The following fields were configured:
+The official Pathways to Possibilities event logo was added to this section.
+
+The introduction identifies the event as:
+
+**Pathways to Possibilities: Launch Your Future Summit**
+
+The event dates are:
+
+**October 5–9, 2026**
+
+The welcome content also explains that Career & Experiential Learning Services invites eligible participants to submit proposals supporting areas such as:
+
+- Career exploration
+- Professional development
+- Academic achievement
+- Workplace readiness
+- Leadership
+- Technology
+- Entrepreneurship
+- Creativity
+- Lifelong learning
+
+The introduction also explains that the questions displayed later in the form change based on the proposal type selected.
+
+---
+
+# 2. Submitter Information
+
+A shared submitter information section was implemented before the specialized proposal pathways.
+
+This information is collected regardless of the type of proposal being submitted.
+
+Implemented fields include:
+
+### Proposal Title - Submitter Name
+
+A required field used as the submission name.
 
 ### Full Name
 
-Field type:
-
-`Name`
-
-Required:
-
-`Yes`
+Required submitter name information.
 
 ### Email Address
 
-Field type:
+Required.
 
-`Email`
-
-Required:
-
-`Yes`
-
-Instruction:
-
-`Please provide the email address where you would like to receive communications regarding your proposal.`
+Additional instructions explain that this email address will be used for communications regarding the proposal.
 
 ### Phone Number
 
-Field type:
+Optional.
 
-`Phone`
+The submitter may provide a phone number if they would like the planning team to contact them by phone.
 
-Required:
+### Submitter Affiliation
 
-`No`
+The form asks:
 
-Instruction:
+**Which best describes you?**
 
-`Provide a phone number if you would like the planning team to contact you by phone regarding your submission.`
-
-### Which best describes you?
-
-Field type:
-
-`Single Response`
-
-Required:
-
-`Yes`
-
-Options:
+Options include:
 
 - SUNY Empire Student
 - SUNY Empire Faculty Member
@@ -125,92 +111,68 @@ Options:
 
 ### Organization, School, or Department
 
-Field type:
+Required.
 
-`Short Answer`
-
-Required:
-
-`Yes`
-
-Instruction:
-
-`Enter the name of your employer, organization, school, university, department, or other primary affiliation.`
+Submitters enter their employer, organization, school, university, department, or other primary affiliation.
 
 ---
 
-## Step 5 — Create the Primary Proposal Branch
+# 3. Primary Proposal Branching
 
-A Proposal Type section was created to control the primary branching behavior of the form.
+The main branching question is:
 
-The branching question is:
+**What type of proposal are you submitting?**
 
-`What type of proposal are you submitting?`
-
-Field type:
-
-`Single Response`
-
-Required:
-
-`Yes`
-
-The final options are:
+The implemented options are:
 
 - Presentation
 - Interactive Activity
 
-Each response is connected to its corresponding Submittable branch.
+Branching was enabled on this question so that the form could later display the appropriate specialized sections.
 
-This question acts as the primary routing point for the consolidated form.
+The primary structure is:
+
+```text
+What type of proposal are you submitting?
+│
+├── Presentation
+│
+└── Interactive Activity
+```
+
+This provides a single decision point for the primary proposal pathway.
 
 ---
 
-## Step 6 — Configure Shared Proposal Information
+# 4. Shared Proposal Information
 
-Information that applies broadly to proposal submissions was kept outside the specialized proposal sections.
+Information applicable to the proposal process broadly was placed outside the specialized sections where possible.
 
-The Shared Proposal Information section includes:
+The shared proposal section includes the following fields.
 
 ### Proposal Title
 
-Field type:
+Required.
 
-`Short Answer`
-
-Required:
-
-`Yes`
-
-Instruction:
-
-`Enter the title exactly as you would like it to appear in event materials if your proposal is accepted.`
+Submitters enter the title exactly as they would like it to appear in event materials if the proposal is accepted.
 
 ### Proposal Description
 
-Field type:
+Required.
 
-`Long Answer`
+Submitters provide a brief description explaining what they plan to present, demonstrate, showcase, or discuss and why it would be valuable to summit participants.
 
-Required:
-
-`Yes`
-
-The submitter is asked to explain what they plan to present, demonstrate, showcase, or discuss and why the proposal would be valuable to summit participants.
-
-The instructions also explain that the description will be used during proposal evaluation and may be used in event materials if the proposal is accepted.
+The description may also be used by reviewers during proposal evaluation and in event materials if the proposal is accepted.
 
 ### Intended Audience
 
-Field type:
+Required multiple-response field.
 
-`Multiple Response`
+The form asks:
 
-Required:
+**Who is the intended audience for your proposal? (Select all that apply)**
 
-`Yes`
-
-Options:
+Options include:
 
 - Students
 - Faculty
@@ -222,122 +184,96 @@ Options:
 
 ### Presenter Biography
 
-Field type:
+Required.
 
-`Long Answer`
-
-Required:
-
-`Yes`
-
-The field collects a brief professional biography describing the submitter's experience, expertise, education, or connection to the proposed topic.
+A biography is collected to provide context about the person submitting the proposal.
 
 ### Participant Takeaways
 
-Field type:
+Required.
 
-`Long Answer`
+The form asks:
 
-Required:
-
-`Yes`
-
-Question:
-
-`What are two or three key takeaways participants should leave with?`
+**What are two or three key takeaways participants should leave with?**
 
 Submitters may respond using short statements or bullet points.
 
 ### Accessibility Accommodations
 
-Field type:
+An optional field asks:
 
-`Long Answer`
+**Do you require any accessibility accommodations to participate in your presentation?**
 
-Required:
+Submitters may describe accommodations that would help them participate.
 
-`No`
-
-The field provides participants with an opportunity to identify accommodations that would help them participate.
-
-Submitters are instructed to leave the field blank if no accommodations are needed.
+The field may be left blank when no accommodations are needed.
 
 ---
 
-## Step 7 — Configure the Presentation Branch
+# 5. Presentation Pathway
 
-When Presentation is selected from the primary proposal question, the Presentation pathway becomes available.
+When **Presentation** is selected as the primary proposal type, the Presentation pathway becomes available.
 
-A secondary routing question was added:
+A secondary question determines the type of presentation:
 
-`What type of presentation are you proposing?`
-
-Field type:
-
-`Single Response`
-
-Required:
-
-`Yes`
+**What type of presentation are you proposing?**
 
 Options:
 
 - Formal Presentation
 - Poster Session
 
-Branch labels were assigned so the appropriate section appears based on this selection.
+The secondary structure is:
+
+```text
+Presentation
+│
+└── Presentation Type
+    │
+    ├── Formal Presentation
+    │
+    └── Poster Session
+```
+
+This allowed the consolidated form to support both traditional presentations and the previous student poster submission process.
 
 ---
 
-## Step 8 — Configure the Formal Presentation Pathway
+# 6. Formal Presentation Implementation
 
-When Formal Presentation is selected, the Presentation Information section is displayed.
+When **Formal Presentation** is selected, the Presentation Information section is displayed.
 
-The section includes the following fields.
+The implemented fields include:
 
 ### Presentation Topic
 
-Question:
+Required.
 
-`Which topic best fits your presentation?`
+The form asks:
 
-Field type:
+**Which topic best fits your presentation?**
 
-`Dropdown List`
-
-Required:
-
-`Yes`
+A dropdown is used to collect the response.
 
 ### Presentation Format
 
-Question:
+Required.
 
-`What format best describes your presentation?`
+The form asks:
 
-Field type:
+**What format best describes your presentation?**
 
-`Dropdown List`
-
-Required:
-
-`Yes`
+A dropdown is used to collect the response.
 
 ### Presentation Experience
 
-Question:
+Required.
 
-`Which statement best describes your presentation experience?`
+The form asks:
 
-Field type:
+**Which statement best describes your presentation experience?**
 
-`Single Response`
-
-Required:
-
-`Yes`
-
-Options:
+Options include:
 
 - This would be my first formal presentation
 - I have presented in a classroom, workplace, or community setting
@@ -346,114 +282,49 @@ Options:
 
 ### Relevant Presentation Experience
 
-Field type:
+Optional.
 
-`Long Answer`
+Submitters may briefly describe one or two presentations, workshops, classes, or training sessions they have delivered.
 
-Required:
+The instructions explain that this field may be left blank if this is the submitter's first formal presentation.
 
-`No`
-
-Submitters may describe one or two presentations, workshops, classes, or training sessions they have delivered.
-
-The field can be left blank when the proposal would be the submitter's first formal presentation.
+This prevents presentation experience from becoming a barrier to submitting a proposal.
 
 ---
 
-## Step 9 — Configure the Interactive Activity Pathway
+# 7. Poster Session Implementation
 
-When Interactive Activity is selected from the primary proposal question, the Interactive Activity Information section is displayed.
+When **Poster Session** is selected, the Poster Session Information section is displayed.
 
-### Interactive Activity Type
+This section preserves relevant information from the previous Student Virtual Poster Session form.
 
-Question:
-
-`What type of interactive activity are you proposing?`
-
-Field type:
-
-`Dropdown List`
-
-Required:
-
-`Yes`
-
-Options:
-
-- Interactive Workshop
-- Demonstration
-- Facilitated Discussion
-- Panel Discussion
-- Networking Activity
-- Other
-
-### Activity Requirements
-
-A field was included to collect any technology, space, equipment, materials, room setup, or other requirements the planning team should consider.
-
-The field is optional so submitters without special requirements can leave it blank.
-
----
-
-## Step 10 — Configure the Poster Session Pathway
-
-When Poster Session is selected under Presentation, the Poster Session Information section is displayed.
-
-This pathway preserves the specialized requirements of the student poster submission process within the consolidated form.
+Implemented fields include:
 
 ### Degree Program
 
-Field type:
+Required.
 
-`Short Answer`
-
-Required:
-
-`Yes`
-
-Instruction:
-
-`Enter your current degree program, concentration, or area of study.`
+Students enter their current degree program, concentration, or area of study.
 
 ### Expected Graduation Term
 
-Field type:
-
-`Dropdown List`
-
-Required:
-
-`No`
+A dropdown is provided for the expected graduation term.
 
 ### Faculty Mentor
 
-Field type:
+Optional.
 
-`Short Answer`
-
-Required:
-
-`No`
-
-Instruction:
-
-`If applicable, enter the name of your faculty mentor or academic advisor.`
+Submitters may enter the name of a faculty mentor or academic advisor when applicable.
 
 ### Project Type
 
-Question:
+Required.
 
-`What type of project are you submitting?`
+The form asks:
 
-Field type:
+**What type of project are you submitting?**
 
-`Dropdown List`
-
-Required:
-
-`Yes`
-
-Options:
+Implemented options include:
 
 - Research Project
 - Capstone Project
@@ -465,80 +336,88 @@ Options:
 - Independent Study
 - Other
 
----
+### Individual or Group Project
 
-## Step 11 — Configure Individual and Group Project Logic
+Required.
 
-A secondary conditional question was configured within the Poster Session pathway.
+The form asks:
 
-Question:
-
-`Is this an individual or group project?`
-
-Field type:
-
-`Single Response`
-
-Required:
-
-`Yes`
+**Is this an individual or group project?**
 
 Options:
 
 - Individual Project
 - Group Project
 
-When Individual Project is selected, no additional contributor field is displayed.
+---
 
-When Group Project is selected, the form displays:
+# 8. Group Project Conditional Logic
 
-`Additional Student Presenters or Contributors`
+Additional conditional logic was implemented inside the Poster Session pathway.
 
-This field allows the submitter to provide the names and Empire State email addresses of additional student contributors.
+When **Group Project** is selected, the form displays:
 
-Submitters are instructed to enter each contributor on a separate line.
+### Additional Student Presenters or Contributors
+
+Submitters are instructed to list the names and Empire State email addresses of additional student contributors.
+
+Each contributor is entered on a separate line.
+
+For individual projects, this additional information is not needed.
+
+The resulting logic is:
+
+```text
+Poster Session
+│
+└── Individual or Group Project?
+    │
+    ├── Individual Project
+    │   └── Continue
+    │
+    └── Group Project
+        └── Additional Student Presenters or Contributors
+```
+
+This keeps the form from requesting contributor information when it does not apply.
 
 ---
 
-## Step 12 — Configure Poster File Upload
+# 9. Poster File Upload
 
-A required Poster File upload field was added to the Poster Session pathway.
+A required file upload was implemented for Poster Session submissions.
 
-Field type:
+### Field
 
-`File Upload`
+**Poster File**
 
-Required:
-
-`Yes`
-
-Accepted file type:
+### Accepted File Type
 
 - PDF
 
-Instruction:
+Submitters are instructed to upload their completed poster as a PDF.
 
-`Upload your completed poster as a PDF.`
-
-Submitters are also informed that if the poster is still being finalized, they may upload the most current version available.
+If the poster is still being finalized, the submitter may upload the most current version available.
 
 ---
 
-## Step 13 — Configure Supplemental Materials
+# 10. Supplemental Materials
 
-An optional Supplemental Materials upload field was added.
+An optional Supplemental Materials upload was included.
 
-Field type:
+Submitters may attach up to three supporting files.
 
-`File Upload`
+Supported file types include:
 
-Required:
+- DOC
+- DOCX
+- PDF
+- JPG
+- JPEG
+- PNG
+- MP4
 
-`No`
-
-The configuration allows supporting files that may help reviewers understand the proposal.
-
-Examples include:
+The field may be used for materials such as:
 
 - Images
 - Charts
@@ -546,157 +425,200 @@ Examples include:
 - Supporting documents
 - Short demonstration videos
 
-The completed configuration supports up to three supplemental files.
+The field may be left blank when no supplemental materials are necessary.
 
 ---
 
-## Step 14 — Configure Multimedia Information
+# 11. Poster Multimedia Question
 
 The Poster Session pathway asks:
 
-`Does your poster or display include multimedia?`
-
-Field type:
-
-`Single Response`
-
-Required:
-
-`Yes`
+**Does your poster or display include multimedia?**
 
 Options:
 
 - Yes
 - No
 
-When applicable, additional information can be collected describing multimedia components such as:
+The field is required.
 
-- Video
-- Animation
-- Audio
-- Interactive elements
-- Other multimedia components
-
-This provides the planning team with additional information that may affect event preparation.
+This allows the planning team to identify poster submissions that may involve additional media beyond the primary poster.
 
 ---
 
-## Step 15 — Configure Additional Poster Information
+# 12. Additional Poster Information
 
-An optional long-answer field was added:
+An optional long-answer field asks:
 
-`Is there anything else the planning team should know about your poster submission?`
+**Is there anything else the planning team should know about your poster submission?**
 
-The field allows submitters to provide information that may assist with review or event planning.
+Submitters may use this field to provide additional information that could help during review or event planning.
 
-The field can be left blank when no additional information is necessary.
-
----
-
-## Step 16 — Configure the Confirmation Section
-
-A common Thank You section was placed at the end of the submission workflow.
-
-The confirmation language informs submitters that:
-
-- Their proposal has been received.
-- The planning team will review the proposal.
-- They may be contacted if clarification is required.
-- Submission does not guarantee acceptance.
-- Selected participants will receive next steps and event information after review.
-
-Using one confirmation section provides a consistent ending regardless of the proposal pathway followed.
+The field may be left blank when there is nothing additional to provide.
 
 ---
 
-## Branching Configuration Summary
+# 13. Interactive Activity Pathway
 
-The completed branching structure is:
+When **Interactive Activity** is selected as the primary proposal type, the Interactive Activity Information section is displayed.
 
-Call for Proposals
+The form asks:
+
+**What type of interactive activity are you proposing?**
+
+Implemented options include:
+
+- Interactive Workshop
+- Demonstration
+- Facilitated Discussion
+- Panel Discussion
+- Networking Activity
+- Other
+
+This allows the planning team to understand the general format of the proposed interactive contribution.
+
+---
+
+# 14. Branch Configuration
+
+Submittable branching was implemented by assigning sections and fields to the appropriate branch.
+
+The primary proposal question controls the major pathway:
+
+```text
+Proposal Type
 │
 ├── Presentation
 │   │
-│   ├── Formal Presentation
-│   │   └── Presentation Information
-│   │
-│   └── Poster Session
+│   └── Presentation Type
 │       │
-│       ├── Poster Session Information
+│       ├── Formal Presentation
+│       │   └── Presentation Information
 │       │
-│       └── Individual or Group Project
-│           │
-│           ├── Individual Project
-│           │
-│           └── Group Project
-│               └── Additional Student Presenters or Contributors
+│       └── Poster Session
+│           └── Poster Session Information
 │
 └── Interactive Activity
     └── Interactive Activity Information
+```
 
-The primary proposal question controls the major form pathway.
+Secondary conditional logic is used where additional decisions are required inside a pathway.
 
-Secondary conditional logic is used only when additional routing is required within that pathway.
-
----
-
-## Branching Methodology
-
-The form was implemented using a section-based branching approach.
-
-The process used was:
-
-1. Create the primary branching question.
-2. Create a branch for each applicable response.
-3. Assign entire form sections to the appropriate branch.
-4. Keep common questions outside specialized branches.
-5. Add secondary conditional logic only when necessary inside an existing pathway.
-6. Preview each branch to confirm that unrelated fields remain hidden.
-
-This structure reduces unnecessary conditional rules and makes the form easier to understand and maintain.
+The Group Project contributor field is one example of this approach.
 
 ---
 
-## Branding and Terminology
+# 15. Submission Confirmation
 
-The final implementation uses the official Pathways to Possibilities event logo as the form's primary branding element.
+A Thank You section was implemented at the end of the proposal process.
 
-Applicable references use:
+The confirmation explains that:
 
-`Career & Experiential Learning Services`
+- The proposal has been received.
+- The Pathways to Possibilities planning team will review the submission.
+- The submitter may be contacted if additional information or clarification is needed.
+- Submitting a proposal does not guarantee acceptance.
+- Selected presenters and participants will receive additional information after the review process.
 
-The updated terminology was applied based on stakeholder direction.
-
----
-
-## Implementation Evidence
-
-Screenshots were captured after implementation to document the completed form and conditional behavior.
-
-The evidence demonstrates:
-
-- Welcome section and official event branding
-- Submitter information
-- Primary proposal selection
-- Shared proposal information
-- Presentation selection
-- Formal Presentation pathway
-- Poster Session pathway
-- Individual project behavior
-- Group project conditional behavior
-- Poster file upload
-- Supplemental materials
-- Multimedia fields
-- Final confirmation section
-
-These screenshots are maintained in the deliverable's `Screenshots/` directory.
+This provides submitters with a clear explanation of what happens after submission.
 
 ---
 
-## Final Implementation State
+# 16. Review Workflow
 
-The completed Call for Proposals provides one centralized Submittable form with conditional pathways for the proposal scenarios included in the stakeholder-approved consolidation.
+The implementation also included configuration of a review workflow stage within the Submittable project.
 
-The implementation preserves specialized requirements where necessary while preventing unrelated questions from being displayed to every submitter.
+This supports the process that occurs after proposals are submitted.
 
-The resulting form is structured so that future changes can be made by modifying individual sections or branch rules without rebuilding the entire proposal workflow.
+The high-level workflow is:
+
+```text
+Submitter
+   │
+   ▼
+Call for Proposals
+   │
+   ▼
+Submission Received
+   │
+   ▼
+Submittable Review Workflow
+   │
+   ▼
+Planning Team Review
+   │
+   ▼
+Selection / Follow-Up
+```
+
+Submittable therefore serves both as the proposal intake platform and the location supporting the proposal review process.
+
+---
+
+# 17. Branding and Terminology
+
+The implementation uses the official **Pathways to Possibilities** event logo.
+
+Applicable references to the department were also updated to:
+
+**Career & Experiential Learning Services**
+
+This reflects the stakeholder-requested terminology.
+
+---
+
+# 18. Final Implemented Architecture
+
+The completed form follows this structure:
+
+```text
+Pathways to Possibilities: Call for Proposals
+│
+├── Welcome
+│
+├── Submitter Information
+│
+├── Proposal Type
+│   │
+│   ├── Presentation
+│   │   │
+│   │   ├── Formal Presentation
+│   │   │   └── Presentation Information
+│   │   │
+│   │   └── Poster Session
+│   │       └── Poster Session Information
+│   │           └── Group Project Logic
+│   │
+│   └── Interactive Activity
+│       └── Interactive Activity Information
+│
+├── Shared Proposal Information
+│
+├── Submission Confirmation
+│
+└── Submittable Review Workflow
+```
+
+---
+
+# Implementation Outcome
+
+The implementation replaced multiple proposal-related submission processes with one centralized Call for Proposals while preserving specialized information where it remained necessary.
+
+The completed solution provides:
+
+- One proposal submission entry point
+- Shared submitter and proposal information
+- Conditional proposal pathways
+- Formal Presentation support
+- Poster Session support
+- Interactive Activity support
+- Group-project conditional logic
+- File upload capabilities
+- Supplemental material support
+- Submission confirmation
+- A Submittable review workflow
+- Updated stakeholder terminology
+- Consistent Pathways to Possibilities branding
+
+The resulting form provides a more centralized proposal intake process without eliminating the specialized information required for reviewing different types of contributions.
